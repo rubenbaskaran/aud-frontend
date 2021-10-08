@@ -6,11 +6,13 @@ import {
   InputLabel,
   Select,
   MenuItem,
+  TextField,
 } from "@mui/material";
 
 function App() {
   const [age, setAge] = React.useState("");
   const [gender, setGender] = React.useState("");
+  const [duration, setDuration] = React.useState("");
   const genderList = ["Male", "Female"];
 
   const ageList = [];
@@ -25,6 +27,19 @@ function App() {
 
   const setGenderHandler = (event) => {
     setGender(event.target.value);
+    console.log(event.target.value);
+  };
+
+  const setDurationHandler = (event) => {
+    if (event.target.value.match(/[a-z]/i) !== null) {
+      return;
+    }
+
+    if (Number(event.target.value) > 999) {
+      return;
+    }
+
+    setDuration(event.target.value);
     console.log(event.target.value);
   };
 
@@ -86,9 +101,20 @@ function App() {
         <Grid
           item
           xs={12}
-          style={{ backgroundColor: "lightgreen", textAlign: "center" }}
+          style={{
+            backgroundColor: "lightgreen",
+            textAlign: "center",
+            padding: "10px",
+          }}
         >
-          <h1>Length of stay 3 digits (int hours)</h1>
+          <TextField
+            id="outlined-basic"
+            label="Length of stay (hours)"
+            variant="outlined"
+            value={duration}
+            onChange={setDurationHandler}
+            style={{ width: "50%" }}
+          />
         </Grid>
         <Grid
           item
