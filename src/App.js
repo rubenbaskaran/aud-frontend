@@ -1,7 +1,33 @@
 import * as React from "react";
-import { Container, Grid } from "@mui/material";
+import {
+  Container,
+  Grid,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
+} from "@mui/material";
 
 function App() {
+  const [age, setAge] = React.useState("");
+  const [gender, setGender] = React.useState("");
+  const genderList = ["Male", "Female"];
+
+  const ageList = [];
+  for (var i = 18; i < 101; i++) {
+    ageList.push(i.toString());
+  }
+
+  const setAgeHandler = (event) => {
+    setAge(event.target.value);
+    console.log(event.target.value);
+  };
+
+  const setGenderHandler = (event) => {
+    setGender(event.target.value);
+    console.log(event.target.value);
+  };
+
   return (
     <Container fixed>
       <Grid container style={{ backgroundColor: "yellow" }}>
@@ -11,16 +37,51 @@ function App() {
           style={{
             backgroundColor: "turquoise",
             textAlign: "center",
+            padding: "10px",
           }}
         >
-          <h1>Age (18-101) (int)</h1>
+          <FormControl style={{ width: "50%" }}>
+            <InputLabel id="demo-simple-select-label">Age</InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={age}
+              label="Age"
+              onChange={setAgeHandler}
+            >
+              {ageList.map((ageValue) => (
+                <MenuItem key={ageValue} value={ageValue}>
+                  {ageValue}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
         </Grid>
         <Grid
           item
           xs={12}
-          style={{ backgroundColor: "lightblue", textAlign: "center" }}
+          style={{
+            backgroundColor: "lightblue",
+            textAlign: "center",
+            padding: "10px",
+          }}
         >
-          <h1>Sex (1 or 0)</h1>
+          <FormControl style={{ width: "50%" }}>
+            <InputLabel id="demo-simple-select-label">Gender</InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={gender}
+              label="Gender"
+              onChange={setGenderHandler}
+            >
+              {genderList.map((genderValue) => (
+                <MenuItem key={genderValue} value={genderValue}>
+                  {genderValue}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
         </Grid>
         <Grid
           item
