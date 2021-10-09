@@ -15,8 +15,12 @@ function App() {
   const [duration, setDuration] = React.useState("");
   const [diagnosis, setDiagnosis] = React.useState("");
   const [contactType, setContactType] = React.useState("");
+  const [cameThroughEd, setCameThroughEd] = React.useState("");
+  const [goingToIcu, setGoingToIcu] = React.useState("");
   const genderList = ["Male", "Female"];
   const contactTypeList = ["0", "1"];
+  const cameThroughEdList = ["0", "1"];
+  const goingToIcuList = ["0", "1"];
 
   const ageList = [];
   for (var i = 18; i < 101; i++) {
@@ -25,12 +29,12 @@ function App() {
 
   const setAgeHandler = (event) => {
     setAge(event.target.value);
-    console.log(event.target.value);
+    console.log(`Age: ${event.target.value}`);
   };
 
   const setGenderHandler = (event) => {
     setGender(event.target.value);
-    console.log(event.target.value);
+    console.log(`Gender: ${event.target.value}`);
   };
 
   const setDurationHandler = (event) => {
@@ -43,7 +47,7 @@ function App() {
     }
 
     setDuration(event.target.value);
-    console.log(event.target.value);
+    console.log(`Duration: ${event.target.value}`);
   };
 
   const setDiagnosisHandler = (event) => {
@@ -52,12 +56,22 @@ function App() {
     }
 
     setDiagnosis(event.target.value);
-    console.log(event.target.value);
+    console.log(`Diagnosis: ${event.target.value}`);
   };
 
   const setContactTypeHandler = (event) => {
     setContactType(event.target.value);
-    console.log(event.target.value);
+    console.log(`Contact type: ${event.target.value}`);
+  };
+
+  const setCameThroughEdHandler = (event) => {
+    setCameThroughEd(event.target.value);
+    console.log(`Came through ED: ${event.target.value}`);
+  };
+
+  const setGoingToIcuHandler = (event) => {
+    setGoingToIcu(event.target.value);
+    console.log(`Going to ICU: ${event.target.value}`);
   };
 
   return (
@@ -216,19 +230,56 @@ function App() {
         <Grid
           item
           xs={12}
-          style={{ backgroundColor: "grey", textAlign: "center" }}
+          style={{
+            backgroundColor: "lightblue",
+            textAlign: "center",
+            padding: "10px",
+          }}
         >
-          <h1>Emergency departement (came through ed yes no?) (1 or 0)</h1>
+          <FormControl style={{ width: "50%" }}>
+            <InputLabel id="demo-simple-select-label">
+              Came through ED
+            </InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={cameThroughEd}
+              label="Came through ED"
+              onChange={setCameThroughEdHandler}
+            >
+              {cameThroughEdList.map((cameThroughEdValue) => (
+                <MenuItem key={cameThroughEdValue} value={cameThroughEdValue}>
+                  {cameThroughEdValue}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
         </Grid>
         <Grid
           item
           xs={12}
-          style={{ backgroundColor: "pink", textAlign: "center" }}
+          style={{
+            backgroundColor: "lightblue",
+            textAlign: "center",
+            padding: "10px",
+          }}
         >
-          <h1>
-            Intensive care unit (are they going through icu afterwards?) (1 or
-            0)
-          </h1>
+          <FormControl style={{ width: "50%" }}>
+            <InputLabel id="demo-simple-select-label">Going to ICU</InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={goingToIcu}
+              label="Going to ICU"
+              onChange={setGoingToIcuHandler}
+            >
+              {goingToIcuList.map((goingToIcuValue) => (
+                <MenuItem key={goingToIcuValue} value={goingToIcuValue}>
+                  {goingToIcuValue}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
         </Grid>
       </Grid>
     </Container>
