@@ -13,7 +13,10 @@ function App() {
   const [age, setAge] = React.useState("");
   const [gender, setGender] = React.useState("");
   const [duration, setDuration] = React.useState("");
+  const [diagnosis, setDiagnosis] = React.useState("");
+  const [contactType, setContactType] = React.useState("");
   const genderList = ["Male", "Female"];
+  const contactTypeList = ["0", "1"];
 
   const ageList = [];
   for (var i = 18; i < 101; i++) {
@@ -43,14 +46,64 @@ function App() {
     console.log(event.target.value);
   };
 
+  const setDiagnosisHandler = (event) => {
+    if (event.target.value.length > 4) {
+      return;
+    }
+
+    setDiagnosis(event.target.value);
+    console.log(event.target.value);
+  };
+
+  const setContactTypeHandler = (event) => {
+    setContactType(event.target.value);
+    console.log(event.target.value);
+  };
+
   return (
     <Container fixed>
-      <Grid container style={{ backgroundColor: "yellow" }}>
+      <Grid
+        container
+        style={{
+          backgroundColor: "lightblue",
+          border: "10px solid lightblue",
+          borderRadius: "10px",
+        }}
+      >
         <Grid
           item
           xs={12}
           style={{
-            backgroundColor: "turquoise",
+            backgroundColor: "lightblue",
+            textAlign: "center",
+            padding: "10px",
+          }}
+        >
+          <h1>Alcohol Use Disorder Clinical Decision Support System</h1>
+        </Grid>
+        <Grid
+          item
+          xs={12}
+          style={{
+            height: "20px",
+            backgroundColor: "teal",
+            border: "5px solid teal",
+            borderRadius: "10px",
+          }}
+        />
+        <Grid
+          item
+          xs={12}
+          style={{
+            height: "30px",
+            backgroundColor: "lightblue",
+          }}
+        />
+        <Grid
+          item
+          xs={12}
+          style={{
+            backgroundColor: "lightblue",
             textAlign: "center",
             padding: "10px",
           }}
@@ -102,7 +155,7 @@ function App() {
           item
           xs={12}
           style={{
-            backgroundColor: "lightgreen",
+            backgroundColor: "lightblue",
             textAlign: "center",
             padding: "10px",
           }}
@@ -119,16 +172,46 @@ function App() {
         <Grid
           item
           xs={12}
-          style={{ backgroundColor: "teal", textAlign: "center" }}
+          style={{
+            backgroundColor: "lightblue",
+            textAlign: "center",
+            padding: "10px",
+          }}
         >
-          <h1>Action diagnosis (string 4 CHARS e.g. "DM16")</h1>
+          <TextField
+            id="outlined-basic"
+            label="Action diagnosis"
+            variant="outlined"
+            value={diagnosis}
+            onChange={setDiagnosisHandler}
+            style={{ width: "50%" }}
+          />
         </Grid>
         <Grid
           item
           xs={12}
-          style={{ backgroundColor: "orange", textAlign: "center" }}
+          style={{
+            backgroundColor: "lightblue",
+            textAlign: "center",
+            padding: "10px",
+          }}
         >
-          <h1>Contact type (0 or 1)</h1>
+          <FormControl style={{ width: "50%" }}>
+            <InputLabel id="demo-simple-select-label">Contact type</InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={contactType}
+              label="Contact type"
+              onChange={setContactTypeHandler}
+            >
+              {contactTypeList.map((contactTypeValue) => (
+                <MenuItem key={contactTypeValue} value={contactTypeValue}>
+                  {contactTypeValue}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
         </Grid>
         <Grid
           item
