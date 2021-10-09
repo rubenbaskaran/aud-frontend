@@ -7,6 +7,7 @@ import {
   Select,
   MenuItem,
   TextField,
+  Button,
 } from "@mui/material";
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
   const contactTypeList = ["0", "1"];
   const cameThroughEdList = ["0", "1"];
   const goingToIcuList = ["0", "1"];
+  const [buttonDisabled, setButtonDisabled] = React.useState(true);
 
   const ageList = [];
   for (var i = 18; i < 101; i++) {
@@ -72,6 +74,42 @@ function App() {
   const setGoingToIcuHandler = (event) => {
     setGoingToIcu(event.target.value);
     console.log(`Going to ICU: ${event.target.value}`);
+  };
+
+  React.useEffect(() => {
+    if (
+      age !== "" &&
+      gender !== "" &&
+      duration !== "" &&
+      diagnosis !== "" &&
+      contactType !== "" &&
+      cameThroughEd !== "" &&
+      goingToIcu !== ""
+    ) {
+      setButtonDisabled(false);
+    } else {
+      setButtonDisabled(true);
+    }
+  }, [
+    age,
+    gender,
+    duration,
+    diagnosis,
+    contactType,
+    cameThroughEd,
+    goingToIcu,
+  ]);
+
+  const submitData = () => {
+    console.log({
+      age: age,
+      gender: gender,
+      duration: duration,
+      diagnosis: diagnosis,
+      contactType: contactType,
+      cameThroughEd: cameThroughEd,
+      goingToIcu: goingToIcu,
+    });
   };
 
   return (
@@ -281,6 +319,58 @@ function App() {
             </Select>
           </FormControl>
         </Grid>
+        <Grid
+          item
+          xs={12}
+          style={{
+            height: "10px",
+            backgroundColor: "lightblue",
+          }}
+        />
+        <Grid
+          item
+          xs={12}
+          style={{
+            backgroundColor: "lightblue",
+            textAlign: "center",
+            padding: "10px",
+          }}
+        >
+          <Button
+            onClick={submitData}
+            disabled={buttonDisabled}
+            variant="contained"
+            style={{ width: "50%" }}
+          >
+            Submit
+          </Button>
+        </Grid>
+        <Grid
+          item
+          xs={12}
+          style={{
+            height: "25px",
+            backgroundColor: "lightblue",
+          }}
+        />
+        <Grid
+          item
+          xs={12}
+          style={{
+            height: "20px",
+            backgroundColor: "teal",
+            border: "5px solid teal",
+            borderRadius: "10px",
+          }}
+        />
+        <Grid
+          item
+          xs={12}
+          style={{
+            height: "30px",
+            backgroundColor: "lightblue",
+          }}
+        />
       </Grid>
     </Container>
   );
