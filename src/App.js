@@ -126,13 +126,37 @@ function App() {
           item
           xs={12}
           style={{
+            height: "15px",
+            backgroundColor: "lightblue",
+          }}
+        />
+        <Grid
+          item
+          xs={12}
+          style={{
             backgroundColor: "lightblue",
             textAlign: "center",
             padding: "10px",
           }}
         >
-          <h1>Alcohol Use Disorder Clinical Decision Support System</h1>
+          <div
+            style={{
+              fontSize: "35px",
+              fontFamily: "Calibri",
+              fontWeight: "bold",
+            }}
+          >
+            Alcohol Use Disorder Clinical Decision Support System
+          </div>
         </Grid>
+        <Grid
+          item
+          xs={12}
+          style={{
+            height: "15px",
+            backgroundColor: "lightblue",
+          }}
+        />
         <Grid
           item
           xs={12}
@@ -161,13 +185,19 @@ function App() {
           }}
         >
           <FormControl style={{ width: "50%" }}>
-            <InputLabel id="demo-simple-select-label">Age</InputLabel>
+            <InputLabel
+              id="demo-simple-select-label"
+              style={{ fontSize: "20px" }}
+            >
+              Age
+            </InputLabel>
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
               value={age}
               label="Age"
               onChange={setAgeHandler}
+              style={{ fontSize: "20px" }}
             >
               {ageList.map((ageValue) => (
                 <MenuItem key={ageValue} value={ageValue}>
@@ -187,13 +217,19 @@ function App() {
           }}
         >
           <FormControl style={{ width: "50%" }}>
-            <InputLabel id="demo-simple-select-label">Gender</InputLabel>
+            <InputLabel
+              id="demo-simple-select-label"
+              style={{ fontSize: "20px" }}
+            >
+              Gender
+            </InputLabel>
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
               value={gender}
               label="Gender"
               onChange={setGenderHandler}
+              style={{ fontSize: "20px" }}
             >
               {genderList.map((genderValue) => (
                 <MenuItem key={genderValue} value={genderValue}>
@@ -218,7 +254,7 @@ function App() {
             variant="outlined"
             value={duration}
             onChange={setDurationHandler}
-            style={{ width: "50%" }}
+            style={{ width: "50%", fontSize: "20px" }}
           />
         </Grid>
         <Grid
@@ -236,7 +272,7 @@ function App() {
             variant="outlined"
             value={diagnosis}
             onChange={setDiagnosisHandler}
-            style={{ width: "50%" }}
+            style={{ width: "50%", fontSize: "20px" }}
           />
         </Grid>
         <Grid
@@ -249,13 +285,19 @@ function App() {
           }}
         >
           <FormControl style={{ width: "50%" }}>
-            <InputLabel id="demo-simple-select-label">Contact type</InputLabel>
+            <InputLabel
+              id="demo-simple-select-label"
+              style={{ fontSize: "20px" }}
+            >
+              Contact type
+            </InputLabel>
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
               value={contactType}
               label="Contact type"
               onChange={setContactTypeHandler}
+              style={{ fontSize: "20px" }}
             >
               {contactTypeList.map((contactTypeValue) => (
                 <MenuItem key={contactTypeValue} value={contactTypeValue}>
@@ -275,7 +317,10 @@ function App() {
           }}
         >
           <FormControl style={{ width: "50%" }}>
-            <InputLabel id="demo-simple-select-label">
+            <InputLabel
+              id="demo-simple-select-label"
+              style={{ fontSize: "20px" }}
+            >
               Came through ED
             </InputLabel>
             <Select
@@ -284,6 +329,7 @@ function App() {
               value={cameThroughEd}
               label="Came through ED"
               onChange={setCameThroughEdHandler}
+              style={{ fontSize: "20px" }}
             >
               {cameThroughEdList.map((cameThroughEdValue) => (
                 <MenuItem key={cameThroughEdValue} value={cameThroughEdValue}>
@@ -303,13 +349,19 @@ function App() {
           }}
         >
           <FormControl style={{ width: "50%" }}>
-            <InputLabel id="demo-simple-select-label">Going to ICU</InputLabel>
+            <InputLabel
+              id="demo-simple-select-label"
+              style={{ fontSize: "20px" }}
+            >
+              Going to ICU
+            </InputLabel>
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
               value={goingToIcu}
               label="Going to ICU"
               onChange={setGoingToIcuHandler}
+              style={{ fontSize: "20px" }}
             >
               {goingToIcuList.map((goingToIcuValue) => (
                 <MenuItem key={goingToIcuValue} value={goingToIcuValue}>
@@ -340,7 +392,7 @@ function App() {
             onClick={submitData}
             disabled={buttonDisabled}
             variant="contained"
-            style={{ width: "50%" }}
+            style={{ width: "50%", fontSize: "20px" }}
           >
             Submit
           </Button>
