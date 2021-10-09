@@ -11,6 +11,7 @@ import {
 } from "@mui/material";
 
 function App() {
+  //#region Variables
   const [age, setAge] = React.useState("");
   const [gender, setGender] = React.useState("");
   const [duration, setDuration] = React.useState("");
@@ -23,12 +24,13 @@ function App() {
   const cameThroughEdList = ["0", "1"];
   const goingToIcuList = ["0", "1"];
   const [buttonDisabled, setButtonDisabled] = React.useState(true);
-
   const ageList = [];
   for (var i = 18; i < 101; i++) {
     ageList.push(i.toString());
   }
+  //#endregion
 
+  //#region Handlers
   const setAgeHandler = (event) => {
     setAge(event.target.value);
     console.log(`Age: ${event.target.value}`);
@@ -44,7 +46,7 @@ function App() {
       return;
     }
 
-    if (Number(event.target.value) > 999) {
+    if (event.target.value.length > 3) {
       return;
     }
 
@@ -75,7 +77,9 @@ function App() {
     setGoingToIcu(event.target.value);
     console.log(`Going to ICU: ${event.target.value}`);
   };
+  //#endregion
 
+  //#region Other functions
   React.useEffect(() => {
     if (
       age !== "" &&
@@ -111,6 +115,7 @@ function App() {
       goingToIcu: goingToIcu,
     });
   };
+  //#endregion
 
   return (
     <Container fixed>
@@ -187,7 +192,7 @@ function App() {
           <FormControl style={{ width: "50%" }}>
             <InputLabel
               id="demo-simple-select-label"
-              style={{ fontSize: "20px" }}
+              style={{ fontSize: "20px", color: "black" }}
             >
               Age
             </InputLabel>
@@ -219,7 +224,7 @@ function App() {
           <FormControl style={{ width: "50%" }}>
             <InputLabel
               id="demo-simple-select-label"
-              style={{ fontSize: "20px" }}
+              style={{ fontSize: "20px", color: "black" }}
             >
               Gender
             </InputLabel>
@@ -254,7 +259,16 @@ function App() {
             variant="outlined"
             value={duration}
             onChange={setDurationHandler}
-            style={{ width: "50%", fontSize: "20px" }}
+            style={{ width: "50%" }}
+            sx={{
+              "& .MuiOutlinedInput-input": {
+                fontSize: "20px",
+              },
+              "& .MuiInputLabel-formControl": {
+                fontSize: "20px",
+                color: "red",
+              },
+            }}
           />
         </Grid>
         <Grid
@@ -272,7 +286,16 @@ function App() {
             variant="outlined"
             value={diagnosis}
             onChange={setDiagnosisHandler}
-            style={{ width: "50%", fontSize: "20px" }}
+            style={{ width: "50%" }}
+            sx={{
+              "& .MuiOutlinedInput-input": {
+                fontSize: "20px",
+              },
+              "& .MuiInputLabel-formControl": {
+                fontSize: "20px",
+                color: "yellow",
+              },
+            }}
           />
         </Grid>
         <Grid
@@ -287,7 +310,7 @@ function App() {
           <FormControl style={{ width: "50%" }}>
             <InputLabel
               id="demo-simple-select-label"
-              style={{ fontSize: "20px" }}
+              style={{ fontSize: "20px", color: "black" }}
             >
               Contact type
             </InputLabel>
@@ -319,7 +342,7 @@ function App() {
           <FormControl style={{ width: "50%" }}>
             <InputLabel
               id="demo-simple-select-label"
-              style={{ fontSize: "20px" }}
+              style={{ fontSize: "20px", color: "black" }}
             >
               Came through ED
             </InputLabel>
@@ -351,7 +374,7 @@ function App() {
           <FormControl style={{ width: "50%" }}>
             <InputLabel
               id="demo-simple-select-label"
-              style={{ fontSize: "20px" }}
+              style={{ fontSize: "20px", color: "black" }}
             >
               Going to ICU
             </InputLabel>
