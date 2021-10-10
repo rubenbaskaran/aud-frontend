@@ -224,7 +224,10 @@ function App() {
           <FormControl style={{ width: "50%" }}>
             <InputLabel
               id="demo-simple-select-label"
-              style={{ fontSize: "20px", color: "black" }}
+              style={{
+                fontSize: "20px",
+                color: "black",
+              }}
             >
               Gender
             </InputLabel>
@@ -261,11 +264,11 @@ function App() {
             onChange={setDurationHandler}
             style={{ width: "50%" }}
             sx={{
-              "& .MuiOutlinedInput-input": {
+              "& .MuiInputLabel-formControl": {
                 fontSize: "20px",
                 color: "black",
               },
-              "& .MuiInputLabel-formControl": {
+              "& .MuiOutlinedInput-input": {
                 fontSize: "20px",
                 color: "black",
               },
@@ -273,10 +276,15 @@ function App() {
                 fontSize: "20px",
                 color: "black",
               },
-              "& .MuiInputLabel-shrink": {
+              "& .MuiOutlinedInput-root": {
                 fontSize: "20px",
                 color: "black",
               },
+              "& .css-1kty9di-MuiFormLabel-root-MuiInputLabel-root.Mui-focused":
+                {
+                  fontSize: "20px",
+                  color: "black",
+                },
             }}
           />
         </Grid>
@@ -297,11 +305,11 @@ function App() {
             onChange={setDiagnosisHandler}
             style={{ width: "50%" }}
             sx={{
-              "& .MuiOutlinedInput-input": {
+              "& .MuiInputLabel-formControl": {
                 fontSize: "20px",
                 color: "black",
               },
-              "& .MuiInputLabel-formControl": {
+              "& .MuiOutlinedInput-input": {
                 fontSize: "20px",
                 color: "black",
               },
@@ -309,10 +317,15 @@ function App() {
                 fontSize: "20px",
                 color: "black",
               },
-              "& .MuiInputLabel-shrink": {
+              "& .MuiOutlinedInput-root": {
                 fontSize: "20px",
                 color: "black",
               },
+              "& .css-1kty9di-MuiFormLabel-root-MuiInputLabel-root.Mui-focused":
+                {
+                  fontSize: "20px",
+                  color: "black",
+                },
             }}
           />
         </Grid>
