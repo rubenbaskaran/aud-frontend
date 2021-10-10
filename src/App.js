@@ -9,6 +9,7 @@ import {
   TextField,
   Button,
 } from "@mui/material";
+import axios from "axios";
 
 function App() {
   //#region Variables
@@ -105,7 +106,7 @@ function App() {
   ]);
 
   const submitData = () => {
-    console.log({
+    const data = {
       age: age,
       gender: gender,
       duration: duration,
@@ -113,7 +114,16 @@ function App() {
       contactType: contactType,
       cameThroughEd: cameThroughEd,
       goingToIcu: goingToIcu,
-    });
+    };
+
+    axios
+      .post("http://localhost:3001/submit", { data })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   };
   //#endregion
 
