@@ -256,88 +256,6 @@ function App() {
             padding: "10px",
           }}
         >
-          <TextField
-            id="outlined-basic"
-            label="Length of stay (hours)"
-            variant="outlined"
-            value={duration}
-            onChange={setDurationHandler}
-            style={{ width: "50%" }}
-            sx={{
-              "& .MuiInputLabel-formControl": {
-                fontSize: "20px",
-                color: "black",
-              },
-              "& .MuiOutlinedInput-input": {
-                fontSize: "20px",
-                color: "black",
-              },
-              "& .Mui-focused": {
-                fontSize: "20px",
-                color: "black",
-              },
-              "& .MuiOutlinedInput-root": {
-                fontSize: "20px",
-                color: "black",
-              },
-              "& .css-1kty9di-MuiFormLabel-root-MuiInputLabel-root.Mui-focused":
-                {
-                  fontSize: "20px",
-                  color: "black",
-                },
-            }}
-          />
-        </Grid>
-        <Grid
-          item
-          xs={12}
-          style={{
-            backgroundColor: "lightblue",
-            textAlign: "center",
-            padding: "10px",
-          }}
-        >
-          <TextField
-            id="outlined-basic"
-            label="Action diagnosis"
-            variant="outlined"
-            value={diagnosis}
-            onChange={setDiagnosisHandler}
-            style={{ width: "50%" }}
-            sx={{
-              "& .MuiInputLabel-formControl": {
-                fontSize: "20px",
-                color: "black",
-              },
-              "& .MuiOutlinedInput-input": {
-                fontSize: "20px",
-                color: "black",
-              },
-              "& .Mui-focused": {
-                fontSize: "20px",
-                color: "black",
-              },
-              "& .MuiOutlinedInput-root": {
-                fontSize: "20px",
-                color: "black",
-              },
-              "& .css-1kty9di-MuiFormLabel-root-MuiInputLabel-root.Mui-focused":
-                {
-                  fontSize: "20px",
-                  color: "black",
-                },
-            }}
-          />
-        </Grid>
-        <Grid
-          item
-          xs={12}
-          style={{
-            backgroundColor: "lightblue",
-            textAlign: "center",
-            padding: "10px",
-          }}
-        >
           <FormControl style={{ width: "50%" }}>
             <InputLabel
               id="demo-simple-select-label"
@@ -424,6 +342,88 @@ function App() {
               ))}
             </Select>
           </FormControl>
+        </Grid>
+        <Grid
+          item
+          xs={12}
+          style={{
+            backgroundColor: "lightblue",
+            textAlign: "center",
+            padding: "10px",
+          }}
+        >
+          <TextField
+            id="outlined-basic"
+            label="Length of stay (hours)"
+            variant="outlined"
+            value={duration}
+            onChange={setDurationHandler}
+            style={{ width: "50%" }}
+            sx={{
+              "& .MuiInputLabel-formControl": {
+                fontSize: "20px",
+                color: "black",
+              },
+              "& .MuiOutlinedInput-input": {
+                fontSize: "20px",
+                color: "black",
+              },
+              "& .Mui-focused": {
+                fontSize: "20px",
+                color: "black",
+              },
+              "& .MuiOutlinedInput-root": {
+                fontSize: "20px",
+                color: "black",
+              },
+              "& .css-1kty9di-MuiFormLabel-root-MuiInputLabel-root.Mui-focused":
+                {
+                  fontSize: "20px",
+                  color: "black",
+                },
+            }}
+          />
+        </Grid>
+        <Grid
+          item
+          xs={12}
+          style={{
+            backgroundColor: "lightblue",
+            textAlign: "center",
+            padding: "10px",
+          }}
+        >
+          <TextField
+            id="outlined-basic"
+            label="Action diagnosis"
+            variant="outlined"
+            value={diagnosis}
+            onChange={setDiagnosisHandler}
+            style={{ width: "50%" }}
+            sx={{
+              "& .MuiInputLabel-formControl": {
+                fontSize: "20px",
+                color: "black",
+              },
+              "& .MuiOutlinedInput-input": {
+                fontSize: "20px",
+                color: "black",
+              },
+              "& .Mui-focused": {
+                fontSize: "20px",
+                color: "black",
+              },
+              "& .MuiOutlinedInput-root": {
+                fontSize: "20px",
+                color: "black",
+              },
+              "& .css-1kty9di-MuiFormLabel-root-MuiInputLabel-root.Mui-focused":
+                {
+                  fontSize: "20px",
+                  color: "black",
+                },
+            }}
+          />
         </Grid>
         <Grid
           item
