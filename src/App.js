@@ -263,10 +263,19 @@ function App() {
             sx={{
               "& .MuiOutlinedInput-input": {
                 fontSize: "20px",
+                color: "black",
               },
               "& .MuiInputLabel-formControl": {
                 fontSize: "20px",
-                color: "red",
+                color: "black",
+              },
+              "& .Mui-focused": {
+                fontSize: "20px",
+                color: "black",
+              },
+              "& .MuiInputLabel-shrink": {
+                fontSize: "20px",
+                color: "black",
               },
             }}
           />
@@ -290,10 +299,19 @@ function App() {
             sx={{
               "& .MuiOutlinedInput-input": {
                 fontSize: "20px",
+                color: "black",
               },
               "& .MuiInputLabel-formControl": {
                 fontSize: "20px",
-                color: "yellow",
+                color: "black",
+              },
+              "& .Mui-focused": {
+                fontSize: "20px",
+                color: "black",
+              },
+              "& .MuiInputLabel-shrink": {
+                fontSize: "20px",
+                color: "black",
               },
             }}
           />
