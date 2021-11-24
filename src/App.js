@@ -21,7 +21,7 @@ function App() {
   const [cameThroughEd, setCameThroughEd] = React.useState("");
   const [goingToIcu, setGoingToIcu] = React.useState("");
   const genderList = ["Male", "Female"];
-  const contactTypeList = ["0", "1"];
+  const contactTypeList = ["1", "2"];
   const cameThroughEdList = ["0", "1"];
   const goingToIcuList = ["0", "1"];
   const [buttonDisabled, setButtonDisabled] = React.useState(true);
@@ -120,6 +120,7 @@ function App() {
       .post("http://localhost:3001/submit", { data })
       .then(function (response) {
         console.log(response);
+        // TODO: Set icon to either checkmark og cross
       })
       .catch(function (error) {
         console.log(error);
@@ -199,28 +200,37 @@ function App() {
             padding: "10px",
           }}
         >
-          <FormControl style={{ width: "50%" }}>
-            <InputLabel
-              id="demo-simple-select-label"
-              style={{ fontSize: "20px", color: "black" }}
-            >
-              Age
-            </InputLabel>
-            <Select
-              labelId="demo-simple-select-label"
-              id="demo-simple-select"
-              value={age}
-              label="Age"
-              onChange={setAgeHandler}
-              style={{ fontSize: "20px" }}
-            >
-              {ageList.map((ageValue) => (
-                <MenuItem key={ageValue} value={ageValue}>
-                  {ageValue}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
+          <TextField
+            id="outlined-basic"
+            label="Action diagnosis"
+            variant="outlined"
+            value={diagnosis}
+            onChange={setDiagnosisHandler}
+            style={{ width: "50%" }}
+            sx={{
+              "& .MuiInputLabel-formControl": {
+                fontSize: "20px",
+                color: "black",
+              },
+              "& .MuiOutlinedInput-input": {
+                fontSize: "20px",
+                color: "black",
+              },
+              "& .Mui-focused": {
+                fontSize: "20px",
+                color: "black",
+              },
+              "& .MuiOutlinedInput-root": {
+                fontSize: "20px",
+                color: "black",
+              },
+              "& .css-1kty9di-MuiFormLabel-root-MuiInputLabel-root.Mui-focused":
+                {
+                  fontSize: "20px",
+                  color: "black",
+                },
+            }}
+          />
         </Grid>
         <Grid
           item
@@ -271,83 +281,19 @@ function App() {
               id="demo-simple-select-label"
               style={{ fontSize: "20px", color: "black" }}
             >
-              Contact type
+              Age
             </InputLabel>
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
-              value={contactType}
-              label="Contact type"
-              onChange={setContactTypeHandler}
+              value={age}
+              label="Age"
+              onChange={setAgeHandler}
               style={{ fontSize: "20px" }}
             >
-              {contactTypeList.map((contactTypeValue) => (
-                <MenuItem key={contactTypeValue} value={contactTypeValue}>
-                  {contactTypeValue}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-        </Grid>
-        <Grid
-          item
-          xs={12}
-          style={{
-            backgroundColor: "lightblue",
-            textAlign: "center",
-            padding: "10px",
-          }}
-        >
-          <FormControl style={{ width: "50%" }}>
-            <InputLabel
-              id="demo-simple-select-label"
-              style={{ fontSize: "20px", color: "black" }}
-            >
-              Came through ED
-            </InputLabel>
-            <Select
-              labelId="demo-simple-select-label"
-              id="demo-simple-select"
-              value={cameThroughEd}
-              label="Came through ED"
-              onChange={setCameThroughEdHandler}
-              style={{ fontSize: "20px" }}
-            >
-              {cameThroughEdList.map((cameThroughEdValue) => (
-                <MenuItem key={cameThroughEdValue} value={cameThroughEdValue}>
-                  {cameThroughEdValue}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-        </Grid>
-        <Grid
-          item
-          xs={12}
-          style={{
-            backgroundColor: "lightblue",
-            textAlign: "center",
-            padding: "10px",
-          }}
-        >
-          <FormControl style={{ width: "50%" }}>
-            <InputLabel
-              id="demo-simple-select-label"
-              style={{ fontSize: "20px", color: "black" }}
-            >
-              Going to ICU
-            </InputLabel>
-            <Select
-              labelId="demo-simple-select-label"
-              id="demo-simple-select"
-              value={goingToIcu}
-              label="Going to ICU"
-              onChange={setGoingToIcuHandler}
-              style={{ fontSize: "20px" }}
-            >
-              {goingToIcuList.map((goingToIcuValue) => (
-                <MenuItem key={goingToIcuValue} value={goingToIcuValue}>
-                  {goingToIcuValue}
+              {ageList.map((ageValue) => (
+                <MenuItem key={ageValue} value={ageValue}>
+                  {ageValue}
                 </MenuItem>
               ))}
             </Select>
@@ -403,38 +349,95 @@ function App() {
             padding: "10px",
           }}
         >
-          <TextField
-            id="outlined-basic"
-            label="Action diagnosis"
-            variant="outlined"
-            value={diagnosis}
-            onChange={setDiagnosisHandler}
-            style={{ width: "50%" }}
-            sx={{
-              "& .MuiInputLabel-formControl": {
-                fontSize: "20px",
-                color: "black",
-              },
-              "& .MuiOutlinedInput-input": {
-                fontSize: "20px",
-                color: "black",
-              },
-              "& .Mui-focused": {
-                fontSize: "20px",
-                color: "black",
-              },
-              "& .MuiOutlinedInput-root": {
-                fontSize: "20px",
-                color: "black",
-              },
-              "& .css-1kty9di-MuiFormLabel-root-MuiInputLabel-root.Mui-focused":
-                {
-                  fontSize: "20px",
-                  color: "black",
-                },
-            }}
-          />
+          <FormControl style={{ width: "50%" }}>
+            <InputLabel
+              id="demo-simple-select-label"
+              style={{ fontSize: "20px", color: "black" }}
+            >
+              Going to ICU
+            </InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={goingToIcu}
+              label="Going to ICU"
+              onChange={setGoingToIcuHandler}
+              style={{ fontSize: "20px" }}
+            >
+              {goingToIcuList.map((goingToIcuValue) => (
+                <MenuItem key={goingToIcuValue} value={goingToIcuValue}>
+                  {goingToIcuValue}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
         </Grid>
+        <Grid
+          item
+          xs={12}
+          style={{
+            backgroundColor: "lightblue",
+            textAlign: "center",
+            padding: "10px",
+          }}
+        >
+          <FormControl style={{ width: "50%" }}>
+            <InputLabel
+              id="demo-simple-select-label"
+              style={{ fontSize: "20px", color: "black" }}
+            >
+              Came through ED
+            </InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={cameThroughEd}
+              label="Came through ED"
+              onChange={setCameThroughEdHandler}
+              style={{ fontSize: "20px" }}
+            >
+              {cameThroughEdList.map((cameThroughEdValue) => (
+                <MenuItem key={cameThroughEdValue} value={cameThroughEdValue}>
+                  {cameThroughEdValue}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+        </Grid>
+
+        <Grid
+          item
+          xs={12}
+          style={{
+            backgroundColor: "lightblue",
+            textAlign: "center",
+            padding: "10px",
+          }}
+        >
+          <FormControl style={{ width: "50%" }}>
+            <InputLabel
+              id="demo-simple-select-label"
+              style={{ fontSize: "20px", color: "black" }}
+            >
+              Contact type
+            </InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={contactType}
+              label="Contact type"
+              onChange={setContactTypeHandler}
+              style={{ fontSize: "20px" }}
+            >
+              {contactTypeList.map((contactTypeValue) => (
+                <MenuItem key={contactTypeValue} value={contactTypeValue}>
+                  {contactTypeValue}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+        </Grid>
+
         <Grid
           item
           xs={12}
