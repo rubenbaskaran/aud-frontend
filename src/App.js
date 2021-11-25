@@ -18,6 +18,11 @@ import {
   faSpinner,
 } from "@fortawesome/free-solid-svg-icons";
 
+// ["DF10", 2, 50, 0, 0, 0, 1] --> 1
+// ["DZ03", 1, 35, 50, 0, 0, 2 ] --> 0
+// ["DS72", 2, 100, 55, 0, 0, 1] --> 0
+// ["DF10", 1, 50, 55, 0, 0, 1] --> 1
+
 function App() {
   //#region Variables
   const [age, setAge] = React.useState("");
@@ -42,12 +47,10 @@ function App() {
   //#region Handlers
   const setAgeHandler = (event) => {
     setAge(event.target.value);
-    console.log(`Age: ${event.target.value}`);
   };
 
   const setGenderHandler = (event) => {
     setGender(event.target.value);
-    console.log(`Gender: ${event.target.value}`);
   };
 
   const setDurationHandler = (event) => {
@@ -60,7 +63,6 @@ function App() {
     }
 
     setDuration(event.target.value);
-    console.log(`Duration: ${event.target.value}`);
   };
 
   const setDiagnosisHandler = (event) => {
@@ -69,22 +71,18 @@ function App() {
     }
 
     setDiagnosis(event.target.value);
-    console.log(`Diagnosis: ${event.target.value}`);
   };
 
   const setContactTypeHandler = (event) => {
     setContactType(event.target.value);
-    console.log(`Contact type: ${event.target.value}`);
   };
 
   const setCameThroughEdHandler = (event) => {
     setCameThroughEd(event.target.value);
-    console.log(`Came through ED: ${event.target.value}`);
   };
 
   const setGoingToIcuHandler = (event) => {
     setGoingToIcu(event.target.value);
-    console.log(`Going to ICU: ${event.target.value}`);
   };
   //#endregion
 
