@@ -144,6 +144,7 @@ function App() {
         }
       })
       .catch(function (error) {
+        setShowIcon("question");
         console.log(error);
       });
   };
