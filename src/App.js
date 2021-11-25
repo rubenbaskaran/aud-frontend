@@ -232,7 +232,6 @@ function App() {
           >
             <Grid
               container
-              xs={12}
               style={{
                 backgroundColor: "lightblue",
                 justifyContent: "flex-end",
@@ -273,7 +272,6 @@ function App() {
             </Grid>
             <Grid
               container
-              xs={12}
               style={{
                 backgroundColor: "lightblue",
                 justifyContent: "flex-end",
@@ -308,7 +306,6 @@ function App() {
             </Grid>
             <Grid
               container
-              xs={12}
               style={{
                 backgroundColor: "lightblue",
                 justifyContent: "flex-end",
@@ -340,7 +337,6 @@ function App() {
             </Grid>
             <Grid
               container
-              xs={12}
               style={{
                 backgroundColor: "lightblue",
                 justifyContent: "flex-end",
@@ -381,7 +377,6 @@ function App() {
             </Grid>
             <Grid
               container
-              xs={12}
               style={{
                 backgroundColor: "lightblue",
                 justifyContent: "flex-end",
@@ -413,7 +408,6 @@ function App() {
             </Grid>
             <Grid
               container
-              xs={12}
               style={{
                 backgroundColor: "lightblue",
                 justifyContent: "flex-end",
@@ -448,7 +442,6 @@ function App() {
             </Grid>
             <Grid
               container
-              xs={12}
               style={{
                 backgroundColor: "lightblue",
                 justifyContent: "flex-end",
@@ -488,7 +481,6 @@ function App() {
             />
             <Grid
               container
-              xs={12}
               style={{
                 backgroundColor: "lightblue",
                 justifyContent: "flex-end",
