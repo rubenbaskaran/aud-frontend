@@ -10,6 +10,13 @@ import {
   Button,
 } from "@mui/material";
 import axios from "axios";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faCheck,
+  faTimes,
+  faQuestion,
+  faSpinner,
+} from "@fortawesome/free-solid-svg-icons";
 
 function App() {
   //#region Variables
@@ -25,6 +32,7 @@ function App() {
   const cameThroughEdList = ["0", "1"];
   const goingToIcuList = ["0", "1"];
   const [buttonDisabled, setButtonDisabled] = React.useState(true);
+  const [showIcon, setShowIcon] = React.useState(null);
   const ageList = [];
   for (var i = 18; i < 101; i++) {
     ageList.push(i.toString());
@@ -105,6 +113,12 @@ function App() {
     goingToIcu,
   ]);
 
+  React.useEffect(() => {
+    if (buttonDisabled) {
+      setShowIcon(null);
+    }
+  }, [buttonDisabled]);
+
   const submitData = () => {
     const data = {
       age: age,
@@ -119,8 +133,17 @@ function App() {
     axios
       .post("http://localhost:3001/submit", { data })
       .then(function (response) {
-        console.log(response);
-        // TODO: Set icon to either checkmark og cross
+        switch (response.data.output) {
+          case 0:
+            setShowIcon("check");
+            break;
+          case 1:
+            setShowIcon("cross");
+            break;
+          default:
+            setShowIcon("question");
+            break;
+        }
       })
       .catch(function (error) {
         console.log(error);
@@ -200,13 +223,19 @@ function App() {
             padding: "5px",
           }}
         >
-          <Grid style={{ width: "70%" }}>
+          <Grid
+            container
+            direction="row"
+            style={{
+              width: "70%",
+            }}
+          >
             <Grid
-              item
+              container
               xs={12}
               style={{
                 backgroundColor: "lightblue",
-                textAlign: "center",
+                justifyContent: "flex-end",
                 padding: "10px",
               }}
             >
@@ -216,7 +245,7 @@ function App() {
                 variant="outlined"
                 value={diagnosis}
                 onChange={setDiagnosisHandler}
-                style={{ width: "50%" }}
+                style={{ width: "75%" }}
                 sx={{
                   "& .MuiInputLabel-formControl": {
                     fontSize: "20px",
@@ -243,15 +272,15 @@ function App() {
               />
             </Grid>
             <Grid
-              item
+              container
               xs={12}
               style={{
                 backgroundColor: "lightblue",
-                textAlign: "center",
+                justifyContent: "flex-end",
                 padding: "10px",
               }}
             >
-              <FormControl style={{ width: "50%" }}>
+              <FormControl style={{ width: "75%" }}>
                 <InputLabel
                   id="demo-simple-select-label"
                   style={{
@@ -278,15 +307,15 @@ function App() {
               </FormControl>
             </Grid>
             <Grid
-              item
+              container
               xs={12}
               style={{
                 backgroundColor: "lightblue",
-                textAlign: "center",
+                justifyContent: "flex-end",
                 padding: "10px",
               }}
             >
-              <FormControl style={{ width: "50%" }}>
+              <FormControl style={{ width: "75%" }}>
                 <InputLabel
                   id="demo-simple-select-label"
                   style={{ fontSize: "20px", color: "black" }}
@@ -310,11 +339,11 @@ function App() {
               </FormControl>
             </Grid>
             <Grid
-              item
+              container
               xs={12}
               style={{
                 backgroundColor: "lightblue",
-                textAlign: "center",
+                justifyContent: "flex-end",
                 padding: "10px",
               }}
             >
@@ -324,7 +353,7 @@ function App() {
                 variant="outlined"
                 value={duration}
                 onChange={setDurationHandler}
-                style={{ width: "50%" }}
+                style={{ width: "75%" }}
                 sx={{
                   "& .MuiInputLabel-formControl": {
                     fontSize: "20px",
@@ -351,15 +380,15 @@ function App() {
               />
             </Grid>
             <Grid
-              item
+              container
               xs={12}
               style={{
                 backgroundColor: "lightblue",
-                textAlign: "center",
+                justifyContent: "flex-end",
                 padding: "10px",
               }}
             >
-              <FormControl style={{ width: "50%" }}>
+              <FormControl style={{ width: "75%" }}>
                 <InputLabel
                   id="demo-simple-select-label"
                   style={{ fontSize: "20px", color: "black" }}
@@ -383,15 +412,15 @@ function App() {
               </FormControl>
             </Grid>
             <Grid
-              item
+              container
               xs={12}
               style={{
                 backgroundColor: "lightblue",
-                textAlign: "center",
+                justifyContent: "flex-end",
                 padding: "10px",
               }}
             >
-              <FormControl style={{ width: "50%" }}>
+              <FormControl style={{ width: "75%" }}>
                 <InputLabel
                   id="demo-simple-select-label"
                   style={{ fontSize: "20px", color: "black" }}
@@ -418,15 +447,15 @@ function App() {
               </FormControl>
             </Grid>
             <Grid
-              item
+              container
               xs={12}
               style={{
                 backgroundColor: "lightblue",
-                textAlign: "center",
+                justifyContent: "flex-end",
                 padding: "10px",
               }}
             >
-              <FormControl style={{ width: "50%" }}>
+              <FormControl style={{ width: "75%" }}>
                 <InputLabel
                   id="demo-simple-select-label"
                   style={{ fontSize: "20px", color: "black" }}
@@ -458,11 +487,11 @@ function App() {
               }}
             />
             <Grid
-              item
+              container
               xs={12}
               style={{
                 backgroundColor: "lightblue",
-                textAlign: "center",
+                justifyContent: "flex-end",
                 padding: "10px",
               }}
             >
@@ -470,15 +499,71 @@ function App() {
                 onClick={submitData}
                 disabled={buttonDisabled}
                 variant="contained"
-                style={{ width: "50%", fontSize: "20px" }}
+                style={{ width: "75%", fontSize: "20px" }}
               >
                 Submit
               </Button>
             </Grid>
           </Grid>
           <Grid
-            style={{ width: "30%", height: "100%", backgroundColor: "red" }}
-          ></Grid>
+            style={{
+              width: "30%",
+              height: "100%",
+              backgroundColor: "lightblue",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            {!showIcon && (
+              <FontAwesomeIcon
+                icon={faSpinner}
+                style={{
+                  backgroundColor: "lightblue",
+                  color: "teal",
+                  height: "25%",
+                  width: "75%",
+                  opacity: "0.8",
+                }}
+              />
+            )}
+
+            {!buttonDisabled && showIcon === "check" && (
+              <FontAwesomeIcon
+                icon={faCheck}
+                style={{
+                  backgroundColor: "lightblue",
+                  color: "green",
+                  height: "25%",
+                  width: "75%",
+                }}
+              />
+            )}
+
+            {!buttonDisabled && showIcon === "cross" && (
+              <FontAwesomeIcon
+                icon={faTimes}
+                style={{
+                  backgroundColor: "lightblue",
+                  color: "red",
+                  height: "25%",
+                  width: "75%",
+                }}
+              />
+            )}
+
+            {!buttonDisabled && showIcon === "question" && (
+              <FontAwesomeIcon
+                icon={faQuestion}
+                style={{
+                  backgroundColor: "lightblue",
+                  color: "orange",
+                  height: "25%",
+                  width: "75%",
+                }}
+              />
+            )}
+          </Grid>
         </Grid>
         <Grid
           item
