@@ -148,6 +148,11 @@ function App() {
         console.log(error);
       });
   };
+
+  // TODO: Populate data from here
+  const populateData = () => {
+    console.log("hello");
+  };
   //#endregion
 
   return (
@@ -229,6 +234,52 @@ function App() {
               width: "70%",
             }}
           >
+            <Grid
+              container
+              style={{
+                backgroundColor: "lightblue",
+                justifyContent: "center",
+                paddingLeft: "140px",
+                paddingBottom: "10px",
+              }}
+            >
+              <form>
+                <label
+                  for="myfile"
+                  style={{
+                    fontSize: "19px",
+                    fontFamily: "Calibri",
+                  }}
+                >
+                  Vælg en fil:{" "}
+                </label>
+                <input
+                  type="file"
+                  id="myfile"
+                  name="myfile"
+                  accept=".csv"
+                  style={{ fontSize: "19px", fontFamily: "Calibri" }}
+                />
+              </form>
+            </Grid>
+
+            <Grid
+              container
+              style={{
+                backgroundColor: "lightblue",
+                justifyContent: "flex-end",
+                padding: "10px",
+              }}
+            >
+              <Button
+                onClick={populateData}
+                variant="contained"
+                style={{ width: "75%", fontSize: "20px" }}
+              >
+                Get data
+              </Button>
+            </Grid>
+
             <Grid
               container
               style={{
