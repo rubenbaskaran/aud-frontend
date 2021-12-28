@@ -153,6 +153,26 @@ function App() {
   const populateData = () => {
     console.log("hello");
   };
+
+  function handleFiles() {
+    const file = this.files[0];
+    let reader = new FileReader();
+
+    reader.readAsText(file);
+
+    reader.onload = function () {
+      console.log(reader.result);
+    };
+
+    reader.onerror = function () {
+      console.log(reader.error);
+    };
+  }
+
+  React.useEffect(() => {
+    const inputElement = document.getElementById("input");
+    inputElement.addEventListener("change", handleFiles, false);
+  }, []);
   //#endregion
 
   return (
@@ -245,7 +265,7 @@ function App() {
             >
               <form>
                 <label
-                  for="myfile"
+                  htmlFor="input"
                   style={{
                     fontSize: "19px",
                     fontFamily: "Calibri",
@@ -255,8 +275,8 @@ function App() {
                 </label>
                 <input
                   type="file"
-                  id="myfile"
-                  name="myfile"
+                  id="input"
+                  name="input"
                   accept=".csv"
                   style={{ fontSize: "19px", fontFamily: "Calibri" }}
                 />
