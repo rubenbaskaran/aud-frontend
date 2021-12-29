@@ -153,6 +153,10 @@ function App() {
     const file = this.files[0];
     let reader = new FileReader();
 
+    if (!file) {
+      return;
+    }
+
     reader.readAsText(file);
 
     reader.onload = function () {
