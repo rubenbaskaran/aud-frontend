@@ -151,12 +151,12 @@ function App() {
 
   function handleFiles() {
     const file = this.files[0];
-    let reader = new FileReader();
 
     if (!file) {
       return;
     }
 
+    const reader = new FileReader();
     reader.readAsText(file);
 
     reader.onload = function () {
