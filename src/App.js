@@ -149,11 +149,6 @@ function App() {
       });
   };
 
-  // TODO: Populate data from here
-  const populateData = () => {
-    console.log("hello");
-  };
-
   function handleFiles() {
     const file = this.files[0];
     let reader = new FileReader();
