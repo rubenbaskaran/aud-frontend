@@ -274,6 +274,7 @@ function App() {
               container
               style={{
                 backgroundColor: "lightblue",
+                padding: "0px 0px 20px 10px",
               }}
             >
               <input
@@ -281,11 +282,7 @@ function App() {
                 id="input"
                 name="input"
                 accept=".csv"
-                style={{
-                  fontSize: "19px",
-                  fontFamily: "Calibri",
-                  padding: "0px 0px 20px 10px",
-                }}
+                style={{ fontSize: "20px", fontFamily: "Arial" }}
               />
             </Grid>
             <Grid
