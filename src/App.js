@@ -25,13 +25,13 @@ import {
 
 function App() {
   //#region Variables
-  const [age, setAge] = React.useState("");
-  const [gender, setGender] = React.useState("");
-  const [duration, setDuration] = React.useState("");
   const [diagnosis, setDiagnosis] = React.useState("");
-  const [contactType, setContactType] = React.useState("");
-  const [cameThroughEd, setCameThroughEd] = React.useState("");
+  const [gender, setGender] = React.useState("");
+  const [age, setAge] = React.useState("");
+  const [duration, setDuration] = React.useState("");
   const [goingToIcu, setGoingToIcu] = React.useState("");
+  const [cameThroughEd, setCameThroughEd] = React.useState("");
+  const [contactType, setContactType] = React.useState("");
   const genderList = ["Male", "Female"];
   const contactTypeList = ["1", "2"];
   const cameThroughEdList = ["0", "1"];
@@ -161,11 +161,19 @@ function App() {
     reader.readAsText(file);
 
     reader.onload = function () {
-      console.log(reader.result);
+      const extractedData = Array.from(reader.result.split(","));
+      setDiagnosis(extractedData[0]);
+      setGender(extractedData[1] === "1" ? "Male" : "Female");
+      setAge(parseInt(extractedData[2]));
+      setDuration(extractedData[3]);
+      setGoingToIcu(parseInt(extractedData[4]));
+      setCameThroughEd(parseInt(extractedData[5]));
+      setContactType(parseInt(extractedData[6]));
     };
 
     reader.onerror = function () {
       console.log(reader.error);
+      setShowIcon("question");
     };
   }
 
@@ -257,49 +265,22 @@ function App() {
             <Grid
               container
               style={{
-                backgroundColor: "lightblue",
-                justifyContent: "center",
-                paddingLeft: "140px",
-                paddingBottom: "10px",
-              }}
-            >
-              <form>
-                <label
-                  htmlFor="input"
-                  style={{
-                    fontSize: "19px",
-                    fontFamily: "Calibri",
-                  }}
-                >
-                  Vælg en fil:{" "}
-                </label>
-                <input
-                  type="file"
-                  id="input"
-                  name="input"
-                  accept=".csv"
-                  style={{ fontSize: "19px", fontFamily: "Calibri" }}
-                />
-              </form>
-            </Grid>
-
-            <Grid
-              container
-              style={{
-                backgroundColor: "lightblue",
+                backgroundColor: "lightgreen",
                 justifyContent: "flex-end",
-                padding: "10px",
               }}
             >
-              <Button
-                onClick={populateData}
-                variant="contained"
-                style={{ width: "75%", fontSize: "20px" }}
-              >
-                Get data
-              </Button>
+              <input
+                type="file"
+                id="input"
+                name="input"
+                accept=".csv"
+                style={{
+                  fontSize: "19px",
+                  fontFamily: "Calibri",
+                  paddingBottom: "15px",
+                }}
+              />
             </Grid>
-
             <Grid
               container
               style={{
