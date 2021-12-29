@@ -161,6 +161,7 @@ function App() {
     reader.readAsText(file);
 
     reader.onload = function () {
+      setShowIcon(null);
       const extractedData = Array.from(reader.result.split(","));
       setDiagnosis(extractedData[0]);
       setGender(extractedData[1] === "1" ? "Male" : "Female");
@@ -259,14 +260,20 @@ function App() {
             container
             direction="row"
             style={{
-              width: "70%",
+              width: "20%",
+            }}
+          ></Grid>
+          <Grid
+            container
+            direction="row"
+            style={{
+              width: "50%",
             }}
           >
             <Grid
               container
               style={{
-                backgroundColor: "lightgreen",
-                justifyContent: "flex-end",
+                backgroundColor: "lightblue",
               }}
             >
               <input
@@ -277,7 +284,7 @@ function App() {
                 style={{
                   fontSize: "19px",
                   fontFamily: "Calibri",
-                  paddingBottom: "15px",
+                  padding: "0px 0px 20px 10px",
                 }}
               />
             </Grid>
@@ -285,7 +292,6 @@ function App() {
               container
               style={{
                 backgroundColor: "lightblue",
-                justifyContent: "flex-end",
                 padding: "10px",
               }}
             >
@@ -295,7 +301,7 @@ function App() {
                 variant="outlined"
                 value={diagnosis}
                 onChange={setDiagnosisHandler}
-                style={{ width: "75%" }}
+                style={{ width: "100%" }}
                 sx={{
                   "& .MuiInputLabel-formControl": {
                     fontSize: "20px",
@@ -325,11 +331,10 @@ function App() {
               container
               style={{
                 backgroundColor: "lightblue",
-                justifyContent: "flex-end",
                 padding: "10px",
               }}
             >
-              <FormControl style={{ width: "75%" }}>
+              <FormControl style={{ width: "100%" }}>
                 <InputLabel
                   id="demo-simple-select-label"
                   style={{
@@ -359,11 +364,10 @@ function App() {
               container
               style={{
                 backgroundColor: "lightblue",
-                justifyContent: "flex-end",
                 padding: "10px",
               }}
             >
-              <FormControl style={{ width: "75%" }}>
+              <FormControl style={{ width: "100%" }}>
                 <InputLabel
                   id="demo-simple-select-label"
                   style={{ fontSize: "20px", color: "black" }}
@@ -390,7 +394,6 @@ function App() {
               container
               style={{
                 backgroundColor: "lightblue",
-                justifyContent: "flex-end",
                 padding: "10px",
               }}
             >
@@ -400,7 +403,7 @@ function App() {
                 variant="outlined"
                 value={duration}
                 onChange={setDurationHandler}
-                style={{ width: "75%" }}
+                style={{ width: "100%" }}
                 sx={{
                   "& .MuiInputLabel-formControl": {
                     fontSize: "20px",
@@ -430,11 +433,10 @@ function App() {
               container
               style={{
                 backgroundColor: "lightblue",
-                justifyContent: "flex-end",
                 padding: "10px",
               }}
             >
-              <FormControl style={{ width: "75%" }}>
+              <FormControl style={{ width: "100%" }}>
                 <InputLabel
                   id="demo-simple-select-label"
                   style={{ fontSize: "20px", color: "black" }}
@@ -461,11 +463,10 @@ function App() {
               container
               style={{
                 backgroundColor: "lightblue",
-                justifyContent: "flex-end",
                 padding: "10px",
               }}
             >
-              <FormControl style={{ width: "75%" }}>
+              <FormControl style={{ width: "100%" }}>
                 <InputLabel
                   id="demo-simple-select-label"
                   style={{ fontSize: "20px", color: "black" }}
@@ -495,11 +496,10 @@ function App() {
               container
               style={{
                 backgroundColor: "lightblue",
-                justifyContent: "flex-end",
                 padding: "10px",
               }}
             >
-              <FormControl style={{ width: "75%" }}>
+              <FormControl style={{ width: "100%" }}>
                 <InputLabel
                   id="demo-simple-select-label"
                   style={{ fontSize: "20px", color: "black" }}
@@ -534,7 +534,6 @@ function App() {
               container
               style={{
                 backgroundColor: "lightblue",
-                justifyContent: "flex-end",
                 padding: "10px",
               }}
             >
@@ -542,7 +541,7 @@ function App() {
                 onClick={submitData}
                 disabled={buttonDisabled}
                 variant="contained"
-                style={{ width: "75%", fontSize: "20px" }}
+                style={{ width: "100%", fontSize: "20px" }}
               >
                 Submit
               </Button>
