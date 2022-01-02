@@ -9,6 +9,7 @@ import {
   TextField,
   Button,
   styled,
+  CircularProgress,
 } from "@mui/material";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -38,6 +39,7 @@ function App() {
   const cameThroughEdList = ["0", "1"];
   const goingToIcuList = ["0", "1"];
   const [buttonDisabled, setButtonDisabled] = React.useState(true);
+  const [loading, setLoading] = React.useState(false);
   const [showIcon, setShowIcon] = React.useState(null);
   const [filename, setFilename] = React.useState(null);
   const ageList = [];
@@ -119,7 +121,16 @@ function App() {
     }
   }, [buttonDisabled]);
 
+  React.useEffect(() => {
+    if (loading) {
+      setButtonDisabled(true);
+    } else {
+      setButtonDisabled(false);
+    }
+  }, [loading]);
+
   const submitData = () => {
+    setLoading(true);
     const data = {
       age: age,
       gender: gender,
@@ -144,10 +155,13 @@ function App() {
             setShowIcon("question");
             break;
         }
+
+        setLoading(false);
       })
       .catch(function (error) {
         setShowIcon("question");
         console.log(error);
+        setLoading(false);
       });
   };
 
@@ -656,6 +670,21 @@ function App() {
           }}
         />
       </Grid>
+
+      {loading && (
+        <div
+          style={{
+            position: "absolute",
+            left: "45%",
+            top: "40%",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <CircularProgress style={{ width: "150px", height: "150px" }} />
+        </div>
+      )}
     </Container>
   );
 }
