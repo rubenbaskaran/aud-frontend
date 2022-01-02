@@ -309,8 +309,6 @@ function App() {
               >
                 {filename}
               </label>
-
-              {/* <input type="file" id="contained-button-file" accept=".csv" /> */}
             </Grid>
             <Grid
               container
