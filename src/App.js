@@ -8,6 +8,7 @@ import {
   MenuItem,
   TextField,
   Button,
+  styled,
 } from "@mui/material";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -38,6 +39,7 @@ function App() {
   const goingToIcuList = ["0", "1"];
   const [buttonDisabled, setButtonDisabled] = React.useState(true);
   const [showIcon, setShowIcon] = React.useState(null);
+  const [filename, setFilename] = React.useState(null);
   const ageList = [];
   for (var i = 18; i < 101; i++) {
     ageList.push(i.toString());
@@ -149,13 +151,14 @@ function App() {
       });
   };
 
-  function handleFiles() {
-    const file = this.files[0];
+  function handleFiles(data) {
+    const file = data.target.files[0];
 
     if (!file) {
       return;
     }
 
+    setFilename(file.name);
     const reader = new FileReader();
     reader.readAsText(file);
 
@@ -178,9 +181,14 @@ function App() {
   }
 
   React.useEffect(() => {
-    const inputElement = document.getElementById("input");
-    inputElement.addEventListener("change", handleFiles, false);
+    document
+      .getElementById("input")
+      .addEventListener("change", handleFiles, false);
   }, []);
+
+  const Input = styled("input")({
+    display: "none",
+  });
   //#endregion
 
   return (
@@ -276,13 +284,33 @@ function App() {
                 padding: "0px 0px 20px 10px",
               }}
             >
-              <input
-                type="file"
-                id="input"
-                name="input"
-                accept=".csv"
-                style={{ fontSize: "20px", fontFamily: "Arial" }}
-              />
+              <label htmlFor="input">
+                <Input
+                  id="input"
+                  type="file"
+                  accept=".csv"
+                  onChange={(event) => handleFiles(event)}
+                />
+                <Button
+                  id="input"
+                  variant="contained"
+                  component="span"
+                  style={{ fontSize: "18px" }}
+                >
+                  Upload file
+                </Button>
+              </label>
+              <label
+                style={{
+                  fontFamily: "Helvetica",
+                  fontSize: "20px",
+                  padding: "11px 0px 0px 20px",
+                }}
+              >
+                {filename}
+              </label>
+
+              {/* <input type="file" id="contained-button-file" accept=".csv" /> */}
             </Grid>
             <Grid
               container
